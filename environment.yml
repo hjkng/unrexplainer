@@ -1,0 +1,17 @@
+name: unr
+channels:
+  - pytorch
+  - nvidia
+dependencies:
+  - python >= 3.8
+  - pytorch=2.2.0
+  - pytorch-cuda=12.1
+  - pandas
+  - matplotlib
+  - numpy
+  - pip=22.3
+  - pip:
+    - networkx
+    - scipy
+    - scikit-learn
+    - gensim
