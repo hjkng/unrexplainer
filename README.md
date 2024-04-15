@@ -4,36 +4,54 @@ This repository is the official implementation of the UNR-Explainer: Counterfact
 
 ## Overview
 
-![overview](https://anonymous.4open.science/r/unr0929/overview.jpg)
+![overview](https://github.com/hjkng/unr/blob/main/explainer/overview.jpg)
 
+## Setup
+We provide an environment.yml file to create a Conda environment:
 
-## Requirements
-    • python == 3.9.7
-    • pytorch == 1.13.1
-    • pytorch-cluster == 1.6.0
-    • pyg == 2.2.0
-    • pytorch-scatter == 2.1.0
-    • pytorch-sparse == 0.6.16
-    • cuda == 11.7.1
-    • numpy == 1.23.5
-    • tensorboardx == 2.2
-    • networkx == 3.0
-    • scikit-learn == 1.1.3
-    • scipy == 1.9.3
-    • pandas == 1.5.2
+conda env create -f environment.yml
+conda activate unr
 
-## Training original models
-
-To train the original GNN models for the datasets in the paper, run the following command:
-
-```
-python train_graphsage.py --dataset=='Cora' --model=='GraphSage'
-```
-
-## Explanation
+## Explain
 
 To explain the trained model, run the following command:
 
 ```
-python explain_model.py --dataset=='Cora' --model=='GraphSage'
+python explain_gnns.py --dataset syn1 --model graphsage --task node
+python explain_gnns.py --dataset syn3 --model graphsage --task node
+python explain_gnns.py --dataset syn4 --model graphsage --task node
+python explain_gnns.py --dataset Cora --model graphsage --task link
+python explain_gnns.py --dataset CiteSeer --model graphsage --task link
+python explain_gnns.py --dataset PubMed --model dgi --task node
+```
+
+
+## Evaluate
+
+```
+python evaluate_expl_syn.py --dataset syn1 --model graphsage --task node
+
+python evaluate_expl_syn.py --dataset syn3 --model graphsage --task node
+
+python evaluate_expl_syn.py --dataset syn4 --model graphsage --task node
+
+python evaluate_expl.py --dataset Cora --model graphsage --task link
+
+python evaluate_expl.py --dataset CiteSeer --model graphsage --task link
+
+python evaluate_expl.py --dataset PubMed --model dgi --task node
+```
+
+
+## Train gnns
+
+To train the original GNN models for the datasets in the paper, run the following command:
+
+```
+python train_gnns.py --dataset syn1 --model graphsage --task node
+python train_gnns.py --dataset syn3 --model graphsage --task node
+python train_gnns.py --dataset syn4 --model graphsage --task node
+python train_gnns.py --dataset Cora --model graphsage --task link
+python train_gnns.py --dataset CiteSeer --model graphsage --task link
+python train_gnns.py --dataset PubMed --model dgi --task node
 ```
