@@ -9,8 +9,11 @@ This repository is the official implementation of the UNR-Explainer: Counterfact
 ## Setup
 We provide an environment.yml file to create a Conda environment:
 
+```
 conda env create -f environment.yml
 conda activate unr
+```
+
 
 ## Explain
 
